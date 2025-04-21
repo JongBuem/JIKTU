@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "types": ["node", "jest", "@testing-library/jest-dom"],
     "paths": {
+      "@/features/*": ["src/features/*"],
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
       "@/styles/*": ["styles/*"]
