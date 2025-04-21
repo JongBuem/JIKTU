@@ -28,7 +28,7 @@ export default function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <LoginSubmitButton />
+      <LoginSubmitButton onClick={onSubmit} />
     </form>
   );
 }
