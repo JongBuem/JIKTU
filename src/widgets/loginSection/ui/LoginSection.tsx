@@ -1,5 +1,4 @@
-import { LoginForm } from "@/features/loginForm";
-import { SignupForm } from "@/features/signupForm";
+import { LoginForm } from "@/features/login";
 import LoginBanner from "./LoginBanner";
 import LoginNotice from "./LoginNotice";
 
@@ -9,7 +8,6 @@ export default function LoginSection() {
       <LoginBanner />
       <LoginForm />
       <LoginNotice />
-      <SignupForm />
     </section>
   );
 }

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function LoginNotice() {
   return (
     <div
@@ -8,7 +10,12 @@ export default function LoginNotice() {
         textAlign: "center",
       }}
     >
-      아직 계정이 없으신가요? 회원가입은 아래 양식을 이용하세요.
+      아직 계정이 없으신가요?
+      <Link href={"/signup/"} style={{ color: "blue" }}>
+        {" "}
+        회원가입{" "}
+      </Link>
+      을 이용하세요.
     </div>
   );
 }
