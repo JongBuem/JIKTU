@@ -1,14 +1,16 @@
 "use client";
 
 import { useSignupForm } from "../model/useSignupForm";
+import { useEmailCheck } from "../model/useEmailCheck";
 import { useSignup } from "../model/useSignup";
 import SignupEmailInput from "./SignupEmailInput";
+import SignupCheckEmailRedundancyButton from "./SignupCheckEmailRedundancyButton";
 import SignupPasswordInput from "./SignupPasswordInput";
 import SignupPasswordVerificationInput from "./SignupPasswordVerificationInput";
 import SignupSubmitButton from "./SignupSubmitButton";
-import SignupCheckEmailRedundancyButton from "./SignupCheckEmailRedundancyButton";
 
 export default function SignupForm() {
+  const emailCheck = useEmailCheck();
   const signup = useSignup();
   const {
     email,
@@ -18,8 +20,14 @@ export default function SignupForm() {
     verificationPassword,
     setVerificationPassword,
     error,
+    isEmailValid,
     isValid,
   } = useSignupForm();
+
+  const onEmail = () => {
+    if (!isEmailValid()) return;
+    emailCheck(email);
+  };
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,7 +41,7 @@ export default function SignupForm() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <SignupCheckEmailRedundancyButton onClick={() => console.log("Asd")} />
+      <SignupCheckEmailRedundancyButton onClick={onEmail} />
       <SignupPasswordInput
         value={password}
         onChange={(e) => setPassword(e.target.value)}

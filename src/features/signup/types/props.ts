@@ -4,7 +4,7 @@ export interface SignupEmailInputProps {
 }
 
 export interface SignupCheckEmailRedundancyButtonProps {
-  onClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export interface SignupPasswordInputProps {

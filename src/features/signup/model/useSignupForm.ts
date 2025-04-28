@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { validateEmail } from "../lib/validateEmail";
 import { validateSignupForm } from "../lib/validateForm";
 
 export function useSignupForm() {
@@ -7,6 +8,14 @@ export function useSignupForm() {
   const [password, setPassword] = useState<string>("");
   const [verificationPassword, setVerificationPassword] = useState<string>("");
   const [error, setError] = useState<string | null>(null);
+
+  const isEmailValid = () => {
+    const errorMessage = validateEmail({
+      email,
+    });
+    setError(errorMessage);
+    return !errorMessage;
+  };
 
   const isValid = () => {
     const errorMessage = validateSignupForm({
@@ -17,6 +26,7 @@ export function useSignupForm() {
     setError(errorMessage);
     return !errorMessage;
   };
+
   return {
     email,
     password,
@@ -26,5 +36,6 @@ export function useSignupForm() {
     setVerificationPassword,
     error,
     isValid,
+    isEmailValid,
   };
 }
